@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/place_category.dart';
+import '../../routes/app_routes.dart';
 import '../../models/tourist_place.dart';
 import '../../services/favorites_service.dart';
 import '../../theme/app_colors.dart';
@@ -221,9 +222,7 @@ class _PlaceDetailViewState extends State<PlaceDetailView> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'La experiencia de realidad '
-                              'aumentada se habilitará en '
-                              'una fase posterior.',
+                              'Puedes probar una simulación de RA. La cámara y el reconocimiento real se implementarán después.',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall,
@@ -234,6 +233,15 @@ class _PlaceDetailViewState extends State<PlaceDetailView> {
                     ],
                   ),
                 ),
+              ),
+              const SizedBox(height: AppDimensions.spacingSmall),
+              FilledButton.icon(
+                onPressed: () => Navigator.of(context).pushNamed(
+                  AppRoutes.arExperience,
+                  arguments: place.id,
+                ),
+                icon: const Icon(Icons.view_in_ar_outlined),
+                label: const Text('Iniciar simulación RA'),
               ),
             ],
             const SizedBox(
